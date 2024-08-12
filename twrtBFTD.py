@@ -20,12 +20,12 @@ from secrets import consumer_key, consumer_secret, access_token, access_token_se
 
 
 class myThread (threading.Thread):
-    def __init__(self,accounts):
-        threading.Thread.__init__(self)
-        self.accounts=accounts
-    def run(self):
-        print "Starting " + self.name
-        findem(self.accounts)
+	def __init__(self,accounts):
+		threading.Thread.__init__(self)
+		self.accounts=accounts
+	def run(self):
+		print("Starting " + self.name)
+		findem(self.accounts)
 
 def get_all_tweets(screen_name):
 	alltweets = []
@@ -36,7 +36,7 @@ def get_all_tweets(screen_name):
 		new_tweets = api.user_timeline(screen_name = screen_name,count=200,max_id=oldest)
 		alltweets.extend(new_tweets)
 		oldest = alltweets[-1]['id'] - 1
-		print "...%s tweets downloaded so far for %s" % ((len(alltweets)),"@"+screen_name)
+		print("...%s tweets downloaded so far for %s" % ((len(alltweets)),"@"+screen_name))
 	return alltweets
 
 
@@ -110,4 +110,3 @@ for x in range(20):
 while True:
 	time.sleep(1)
 	
-
